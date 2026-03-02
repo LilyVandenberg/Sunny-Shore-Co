@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Sunny Shore & Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ------------------ BASIC SETUP ------------------ */
+body {
+    margin: 0;
+    font-family: 'Baloo 2', cursive;
+    background-color: #F8C8D8;
+    color: #114B5F;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ------------------ SUN ------------------ */
+.sun {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle at center, #FFF7AE 0%, #FFD93D 40%, #FFA500 75%);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 40px #FFD93D,
+        0 0 80px #FFD93D,
+        0 0 120px rgba(255, 217, 61, 0.6);
+    animation: glow 3s ease-in-out infinite alternate;
+    z-index: 10;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 40px #FFD93D, 0 0 80px #FFD93D; transform: scale(1); }
+    100% { box-shadow: 0 0 60px #FFD93D, 0 0 120px #FFD93D, 0 0 160px rgba(255,217,61,0.7); transform: scale(1.05); }
+}
+
+/* ------------------ HEADER ------------------ */
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #FF6B6B;
+    color: white;
+    position: relative;
+    z-index: 5;
+}
+header img {
+    max-width: 250px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 5;
+}
+
+/* ------------------ NAV ------------------ */
+nav {
+    text-align: center;
+    padding: 15px;
+    background-color: #114B5F;
+    z-index: 5;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ------------------ ABOUT CONTENT ------------------ */
+.about-section {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px;
+    background: #FFE66D;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    font-size: 1.2em;
+    position: relative;
+}
+
+/* ------------------ BUBBLE EFFECT ------------------ */
+.bubble {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: rgba(173, 216, 230, 0.7); /* light blue */
+    border-radius: 50%;
+    pointer-events: none;
+    animation: bubbleRise 3s ease-out forwards;
+    z-index: 10;
+    box-shadow: 0 0 8px rgba(173,216,230,0.5);
+}
+
+@keyframes bubbleRise {
+    0% { transform: translateY(0px); opacity: 1; }
+    100% { transform: translateY(-80px) rotate(15deg); opacity: 0; }
+}
+
+/* ------------------ FOOTER ------------------ */
+footer {
+    background-color: #114B5F;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sun -->
+<div class="sun"></div>
+
+<!-- Header -->
+<header>
+    <img src="logo.png" alt="Sunny Shore & Co Logo" id="logo">
+    <h2>Sunny Shore & Co.</h2>
+</header>
+
+<!-- Navigation -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="index.html#shop">Shop</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
+<!-- About Section -->
+<section class="about-section">
+    <h1>About Us</h1>
+    <p>
+        Welcome to Sunny Shore & Co! 🌞 <br><br>
+        We’re a small, kid-run creative hobby business spreading sunshine through fun charms and colourful stickers. What started as a passion project is all about creativity, learning, and fun.
+
+20% of our profits go to supporting the Monash Children’s Cancer Centre. Thanks for being part of our sunny community!
+    </p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 Sunny Shore & Co. All Rights Reserved.</p>
+</footer>
+
+<!-- Logo Bubble JS -->
+<script>
+const logo = document.getElementById("logo");
+
+function logoBubbles() {
+    const rect = logo.getBoundingClientRect();
+    for (let i = 0; i < 6; i++) {
+        let bubble = document.createElement("div");
+        bubble.className = "bubble";
+        bubble.style.left = (rect.left + Math.random() * rect.width) + "px";
+        bubble.style.top = (rect.top + Math.random() * rect.height) + "px";
+        document.body.appendChild(bubble);
+        setTimeout(() => bubble.remove(), 3000);
+    }
+}
+
+// Spawn bubbles every second
+setInterval(logoBubbles, 1000);
+</script>
+
+</body>
+</html>
